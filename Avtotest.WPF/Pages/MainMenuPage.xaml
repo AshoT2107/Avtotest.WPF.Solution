@@ -1,0 +1,126 @@
+﻿<Page x:Class="Avtotest.WPF.Pages.MainMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Avtotest.WPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="500"
+      Title="MainMenuPage">
+      
+    <Border Background="Snow" CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="Drag_Panel" MouseDown="Drag_Panel_MouseDown" Grid.Row="0" Background="#D9D8D8" CornerRadius="10 10 0 0">
+                <DockPanel >
+                    <Border x:Name="Exit_btn" MouseLeftButtonDown="Exit_btn_MouseLeftButtonDown" Background="#FF3D49" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 10 0 "/>
+                    <Border x:Name="Max_btn" MouseLeftButtonDown="Max_btn_MouseLeftButtonDown" Background="#FFBD00" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 10 0 "/>
+                    <Border x:Name="Min_btn" MouseLeftButtonDown="Min_btn_MouseLeftButtonDown" Background="#00D641" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 10 0 "/>
+                </DockPanel>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="C:\Users\ashot\Desktop\Bootcamp\Problems\Projects\Avtotest.WPF.Solution\Avtotest.WPF\Images\avtotestBackground.png"/>
+                    </StackPanel.Background>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock TextAlignment="Left" 
+                               Text="AVTO EXAM" 
+                               Margin="20 20 0 10" 
+                               FontSize="18" 
+                               FontWeight="Bold" 
+                               Foreground="#FFC50C"
+                               />
+                                <TextBlock TextAlignment="Left" 
+                               Text="Yo'l" 
+                               Margin="20 0 0 0" 
+                               FontSize="18" 
+                               FontWeight="Bold" 
+                               Foreground="#3C6FA4"
+                               />
+                                <TextBlock TextAlignment="Left" 
+                               Text="Harakati" 
+                               Margin="20 0 0 0" 
+                               FontSize="18" 
+                               FontWeight="Bold" 
+                               Foreground="#3C6FA4"
+                               />
+                                <TextBlock TextAlignment="Left" 
+                               Text="Qoidalari" 
+                               Margin="20 0 0 0" 
+                               FontSize="18" 
+                               FontWeight="Bold" 
+                               Foreground="#3C6FA4"
+                               />
+                                <TextBlock TextAlignment="Left" 
+                               Text="O'zbekiston" 
+                               Margin="20 0 0 0" 
+                               FontSize="14" 
+                               Foreground="#3C6FA4"
+                               />
+                            </StackPanel>
+                            <Ellipse Grid.Column="1" Height="100" Width="100" HorizontalAlignment="Right" Margin="0 0 40 0">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="C:\Users\ashot\Desktop\Bootcamp\Problems\Projects\Avtotest.WPF.Solution\Avtotest.WPF\Images\avtotest.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel>
+                            <Border Width="70" Height="70" CornerRadius="50" BorderThickness="4" BorderBrush="#D9D8D8">
+                                <TextBlock Text="0/700" FontWeight="Bold" Foreground="Teal" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="Savollar" FontWeight="ExtraBlack" Foreground="Teal" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Border Width="70" Height="70" CornerRadius="50" BorderThickness="4" BorderBrush="#D9D8D8">
+                            <TextBlock Text="0/70" FontWeight="Bold" Foreground="Teal" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+                        </Border>
+                        <TextBlock Text="Tickets" FontWeight="ExtraBlack" Foreground="Teal" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <StackPanel Grid.Row="2"  VerticalAlignment="Bottom">
+                <Button Height="40" Width="300" Margin="0 0 0 5" Foreground="Snow" Background="#3C6FA4" BorderThickness="2" BorderBrush="#3C6FA4" Content="Tickets" FontSize="18" FontWeight="DemiBold">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="StartExamination" Click="StartExamination_Click" Height="40" Width="300" Margin="0 0 0 5" Foreground="Snow" Background="#FFC50C" BorderThickness="2" BorderBrush="#3C6FA4" Content="Examination" FontSize="18" FontWeight="DemiBold">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Page>
