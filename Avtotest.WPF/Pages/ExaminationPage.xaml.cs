@@ -23,6 +23,10 @@ namespace Avtotest.WPF.Pages
     /// </summary>
     public partial class ExaminationPage : Page
     {
+        Dictionary<int, ColorClass> brush = new Dictionary<int, ColorClass>();
+        List<Button> buttonsList = new List<Button>();
+        int currentQuestionIndex = 0;
+        Tuple<int, Choice> choicesButton;
         public ExaminationPage()
         {
             InitializeComponent();
@@ -30,8 +34,7 @@ namespace Avtotest.WPF.Pages
             ShowQuestionText();
         }
 
-        List<Button> buttonsList = new List<Button>();
-        int currentQuestionIndex = 0;
+        
         private void Exit_btn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MainWindow.Instance.Close();
@@ -68,7 +71,7 @@ namespace Avtotest.WPF.Pages
                     MainWindow.Instance.WindowState = WindowState.Maximized;
                     foreach (var button in buttonsList)
                     {
-                        button.Width = (MainWindow.Instance.Width - 50) / 20;
+                        button.Width = (MainWindow.Instance.Width - 70) / 20;
                     }
                 }
                     
@@ -83,6 +86,7 @@ namespace Avtotest.WPF.Pages
             {
                 var button = new Button();
                 button.Style = FindResource("QuestionIndexButtonStyle") as Style;
+                button.Template = FindResource("QuestionIndexButtonTemplate") as ControlTemplate;
                 button.Content = i+1;
                 button.Width = (MainWindow.Instance.Width-50) / 20;
                 button.Click += QuestionIndexButton_Click;
@@ -123,10 +127,23 @@ namespace Avtotest.WPF.Pages
             {
                 var button = new Button();
                 button.Style = FindResource("ChoiceButtonStyle") as Style;// cs dagi style ni UI dagi style ga o'zlashtirib olaman
+                //button.Template = FindResource("ChoiceButtonTemplate") as ControlTemplate;
                 button.DataContext = choices[i];
                 button.Tag = i;
                 button.Click += Button_Click;
+                choicesButton = new Tuple<int, Choice>(i, choices[i]);
                 ChoicesPanel.Children.Add(button);
+                foreach(var item in brush)
+                { 
+                    if(currentQuestionIndex==item.Key)
+                    {
+                        if((int)button.Tag == item.Value.tag)
+                        {
+                            button.Background = item.Value.solidColorBrush;
+                            button.Foreground = new SolidColorBrush(Colors.Snow);
+                        }
+                    }
+                }
             }
         }
 
@@ -135,19 +152,22 @@ namespace Avtotest.WPF.Pages
             
             var button = sender as Button;
             var choice = button!.DataContext as Choice;
-            
             if (choice!.Answer)
             {
-                button.Background = new SolidColorBrush(Colors.Green);
+                button.Background = new SolidColorBrush(Colors.DeepSkyBlue);
                 button.Foreground = new SolidColorBrush(Colors.Snow);
-                buttonsList[currentQuestionIndex].Background= new SolidColorBrush(Colors.Green);
+                buttonsList[currentQuestionIndex].DataContext = new { Color = new SolidColorBrush(Colors.DeepSkyBlue) };
+                buttonsList[currentQuestionIndex].Foreground = new SolidColorBrush(Colors.Snow);
             }
             else
             {
                 button.Background = new SolidColorBrush(Colors.Red);
                 button.Foreground = new SolidColorBrush(Colors.Snow);
-                buttonsList[currentQuestionIndex].DataContext = new { Background = new { Color = new SolidColorBrush(Colors.Red) }  };
+                buttonsList[currentQuestionIndex].DataContext =new { Color = new SolidColorBrush(Colors.Red) };
+                buttonsList[currentQuestionIndex].Foreground = new SolidColorBrush(Colors.Snow);
             }
+            brush.Add(currentQuestionIndex, new ColorClass(int.Parse(button.Tag.ToString()!), (SolidColorBrush)button.Background)); ;
+
             currentQuestionIndex++;
             ShowQuestionText();
         }
