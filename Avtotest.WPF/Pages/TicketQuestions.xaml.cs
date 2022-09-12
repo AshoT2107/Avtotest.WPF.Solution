@@ -65,7 +65,6 @@ namespace Avtotest.WPF.Pages
                     button.Width = (MainWindow.Instance.Width - 30) / 20;
                 }
             }
-
         }
         private void Min_btn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -186,6 +185,11 @@ namespace Avtotest.WPF.Pages
             newQuestionIndex++;
             currentQuestionIndex++;
             ShowQuestionText();
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance.DisplayPage(Enums.EPages.Menu);
         }
     }
 }

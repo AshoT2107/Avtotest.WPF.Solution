@@ -124,10 +124,25 @@
                         </Style>
                     </ScrollViewer.Resources>
                     <StackPanel  x:Name="ChoicesPanel">
-
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
+            <Button Grid.Row="4" 
+                    Width="150" 
+                    Content="Menu"
+                    Margin="10 4 10 4"
+                    BorderBrush="#3C6FA4"
+                    BorderThickness="3"
+                    Background="#FFC50C"
+                    Foreground="Snow"
+                    FontSize="20"
+                    FontWeight="DemiBold" x:Name="MenuButton" Click="MenuButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8" />
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Grid>
     </Border>
 </Page>
