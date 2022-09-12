@@ -106,7 +106,7 @@
                 </Grid>
             </Grid>
             <StackPanel Grid.Row="2"  VerticalAlignment="Bottom">
-                <Button Height="40" Width="300" Margin="0 0 0 5" Foreground="Snow" Background="#3C6FA4" BorderThickness="2" BorderBrush="#3C6FA4" Content="Tickets" FontSize="18" FontWeight="DemiBold">
+                <Button x:Name="TicketsList" Click="TicketsList_Click" Height="40" Width="300" Margin="0 0 0 5" Foreground="Snow" Background="#3C6FA4" BorderThickness="2" BorderBrush="#3C6FA4" Content="Tickets" FontSize="18" FontWeight="DemiBold">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="8"/>

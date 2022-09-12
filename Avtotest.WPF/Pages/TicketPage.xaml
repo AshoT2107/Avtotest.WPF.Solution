@@ -5,10 +5,81 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Avtotest.WPF.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="500"
       Title="TicketPage">
+    <Page.Resources>
+        <Style x:Key="TicketButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+            <Setter Property="Background" Value="DodgerBlue"/>
+            <Setter Property="BorderBrush" Value="#3C6FA4"/>
+            <Setter Property="Content" Value="{Binding Ticket.Text}"/>
+            <Setter Property="Foreground" Value="Snow"/>
+        </Style>
+        <ControlTemplate x:Key="TicketButtonTemplate" TargetType="Button">
+            <Border CornerRadius="7"
+                    BorderThickness="2"
+                    BorderBrush="#3C6FA4"
+                    Height="30"
+                    Width="300"
+                    Background="DodgerBlue"
+                    >
+                <ContentPresenter
+                    VerticalAlignment="Center">
+                </ContentPresenter>
+                <!--<DockPanel Width="300">
+                            <Label Foreground="Snow" HorizontalAlignment="Left" Content="{Binding Ticket.Text}"></Label>
+                        </DockPanel>-->
+            </Border>
+        </ControlTemplate>
+    </Page.Resources>
+    <Border  Background="Snow" CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Border x:Name="Drag_Panel" MouseLeftButtonDown="Drag_Panel_MouseLeftButtonDown"  Grid.Row="0" Background="#D9D8D8" CornerRadius="10 10 0 0">
+                <DockPanel >
+                    <Border x:Name="Exit_btn" MouseLeftButtonDown="Exit_btn_MouseLeftButtonDown"  Background="#FF3D49" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 10 0 "/>
+                    <Border x:Name="Max_btn" MouseLeftButtonDown="Max_btn_MouseLeftButtonDown"  Background="#FFBD00" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 10 0 "/>
+                    <Border x:Name="Min_btn" MouseLeftButtonDown="Min_btn_MouseLeftButtonDown"  Background="#00D641" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 10 0 "/>
+                </DockPanel>
+            </Border>
+            <Border Background="Violet" Grid.Row="1" Margin="10 4 10 4" CornerRadius="8" BorderBrush="#2D092E" BorderThickness="3">
+                <TextBlock Grid.Row="1"
+                       Text="Tickets"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="22"
+                       Foreground="Snow"
+                       FontWeight="DemiBold"
+                       TextAlignment="Center"/>
+            </Border>
+            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                <StackPanel Grid.Row="2" x:Name="TicketButtonsPanel">
 
-    <Grid>
-        
-    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+            <Button Grid.Row="3" 
+                    Width="150" 
+                    Content="Menu"
+                    Margin="10 4 10 4"
+                    BorderBrush="#3C6FA4"
+                    BorderThickness="3"
+                    Background="#FFC50C"
+                    Foreground="Snow"
+                    FontSize="20"
+                    FontWeight="DemiBold" x:Name="MenuButton" Click="MenuButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+    </Border>
 </Page>

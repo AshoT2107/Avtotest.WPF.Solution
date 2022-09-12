@@ -58,5 +58,10 @@ namespace Avtotest.WPF.Pages
         {
             MainWindow.Instance.DisplayPage(EPages.Examination);
         }
+
+        private void TicketsList_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance.DisplayPage(EPages.Tickets);
+        }
     }
 }

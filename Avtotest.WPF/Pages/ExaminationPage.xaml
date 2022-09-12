@@ -74,42 +74,40 @@
         </Style>
     </Page.Resources>
     <Border  Background="Snow" CornerRadius="10">
-
-            <Grid>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Border x:Name="Drag_Panel" MouseLeftButtonDown="Drag_Panel_MouseLeftButtonDown" Grid.Row="0" Background="#D9D8D8" CornerRadius="10 10 0 0">
-                    <DockPanel >
-                        <Border x:Name="Exit_btn" MouseLeftButtonDown="Exit_btn_MouseLeftButtonDown" Background="#FF3D49" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 10 0 "/>
-                        <Border x:Name="Max_btn" MouseLeftButtonDown="Max_btn_MouseLeftButtonDown" Background="#FFBD00" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 10 0 "/>
-                        <Border x:Name="Min_btn" MouseLeftButtonDown="Min_btn_MouseLeftButtonDown" Background="#00D641" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 10 0 "/>
-                    </DockPanel>
-                </Border>
-                <ScrollViewer Foreground="Blue"  BorderBrush="Blue" BorderThickness="3" Grid.Row="1" HorizontalScrollBarVisibility="Visible" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border x:Name="Drag_Panel" MouseLeftButtonDown="Drag_Panel_MouseLeftButtonDown" Grid.Row="0" Background="#D9D8D8" CornerRadius="10 10 0 0">
+                <DockPanel >
+                    <Border x:Name="Exit_btn" MouseLeftButtonDown="Exit_btn_MouseLeftButtonDown" Background="#FF3D49" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 10 0 "/>
+                    <Border x:Name="Max_btn" MouseLeftButtonDown="Max_btn_MouseLeftButtonDown" Background="#FFBD00" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 10 0 "/>
+                    <Border x:Name="Min_btn" MouseLeftButtonDown="Min_btn_MouseLeftButtonDown" Background="#00D641" Width="20" Height="20" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 10 0 "/>
+                </DockPanel>
+            </Border>
+            <ScrollViewer Foreground="Blue"  BorderBrush="Blue" BorderThickness="3" Grid.Row="1" HorizontalScrollBarVisibility="Visible" >
                 <ScrollViewer.Resources>
                     <Style TargetType="Thumb">
                         <Setter Property="Background" Value="Blue"/>
                     </Style>
                 </ScrollViewer.Resources>
-                    <StackPanel  Orientation="Horizontal"  x:Name="QuestionsIndexPanel" Margin="15 0 15 0"/>
-                </ScrollViewer>
+                <StackPanel  Orientation="Horizontal"  x:Name="QuestionsIndexPanel" Margin="15 0 15 0"/>
+            </ScrollViewer>
 
-                <Grid x:Name="ImageGrid" Grid.Row="2" Margin="10">
-                    <Rectangle  x:Name="QuestionImage"  Stroke="Teal" Width="280" RadiusX="10" RadiusY="10">
-                    </Rectangle>
-                    <!--<Image x:Name="QuestionImage"  Width="280"/>-->
-                </Grid>
-                <Grid Grid.Row="3" Margin="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="4*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock x:Name="QuestionText" Grid.Row="0" TextWrapping="Wrap"/>
+            <Grid x:Name="ImageGrid" Grid.Row="2" Margin="10">
+                <Rectangle  x:Name="QuestionImage"  Stroke="Teal" Width="280" RadiusX="10" RadiusY="10">
+                </Rectangle>
+                <!--<Image x:Name="QuestionImage"  Width="280"/>-->
+            </Grid>
+            <Grid Grid.Row="3" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="QuestionText" Grid.Row="0" TextWrapping="Wrap"/>
                 <ScrollViewer  BorderThickness="3" Grid.Row="1" HorizontalScrollBarVisibility="Visible">
                     <ScrollViewer.Resources>
                         <Style TargetType="Thumb">
@@ -126,10 +124,9 @@
                     </ScrollViewer.Resources>
                     <StackPanel  x:Name="ChoicesPanel">
 
-                        </StackPanel>
-                    </ScrollViewer>
-                </Grid>
+                    </StackPanel>
+                </ScrollViewer>
             </Grid>
-
-        </Border>
+        </Grid>
+    </Border>
 </Page>
