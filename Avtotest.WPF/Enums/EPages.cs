@@ -4,6 +4,7 @@ public enum EPages
 {
     Menu,
     Tickets,
-    Examination
+    Examination,
+    TicketQuestions
 }
 

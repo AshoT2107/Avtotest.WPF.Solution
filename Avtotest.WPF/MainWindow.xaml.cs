@@ -51,6 +51,7 @@ namespace Avtotest.WPF
                     break;
                 case EPages.Tickets:MainFrame.Navigate(new TicketPage()); break;
                 case EPages.Menu: MainFrame.Navigate(new MainMenuPage()); break;
+                case EPages.TicketQuestions: MainFrame.Navigate(new TicketQuestions());break;
             }
         }
     }

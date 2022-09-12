@@ -20,9 +20,23 @@ namespace Avtotest.WPF.Pages
     /// </summary>
     public partial class TicketPage : Page
     {
+        private static TicketPage _instance;
+
+        public static TicketPage Instance
+        {
+            get
+            {
+                if(_instance == null )
+                    _instance = new TicketPage();
+                return _instance;
+            }
+        }
+
+        public int Index;
         public TicketPage()
         {
             InitializeComponent();
+            _instance = this;
             GenerateTicketsList();
         }
 
@@ -65,15 +79,19 @@ namespace Avtotest.WPF.Pages
                 var button = new Button();
                 button.Style = FindResource("TicketButtonStyle") as Style;
                 button.Template = FindResource("TicketButtonTemplate") as ControlTemplate;
-                if(i==1)
-                    button.DataContext = new { Ticket = new { Text = $"{i+1}. Ticket 12/20" } };
-                else if(i==4)
-                    button.DataContext = new { Ticket = new { Text = $"{i+1}. ✅" } };
-                else
                 button.DataContext = new { Ticket = new { Text = $"{i + 1}. Ticket" } };
+                button.Tag = i;
+                button.Click += Button_Click;
                 TicketButtonsPanel.Children.Add(button);
             }
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            Index = (int)button!.Tag;
+            MainWindow.Instance.DisplayPage(Enums.EPages.TicketQuestions);
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
